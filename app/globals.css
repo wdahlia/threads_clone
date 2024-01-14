@@ -2,26 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+/* @layer문 사용하여 base, components, utilities에 스타일 추가 가능 */
+/* 세가지로 나누는 이유, */
+/* 
+   base 레이어는 리셋 규칙이나 HTML 요소 기본 스타일을 위한 레이어이다.
+   components 레이어는 유틸리티로 재정의할 수 있는 클래스 기반 스타일을 위한 레이어다.
+   components 레이어에는 재사용 가능한 스타일 설정
+   utilities 레이어는 다른 스타일보다 우선으로 하는 소규모 단일 목적 클래스를 위한 레이어다.
+*/
+
+/* 
+@layer components {
+  
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@layer utilities {
+ 
+} */
