@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+/* 767px부터 threads 시작 Input 사라짐, TopNav 컴포넌트는 아직 존재 */
+/* 700px미만부터 threads 모바일 컴포넌트 TopNav 컴포넌트 제거, BottomNav 컴포넌트 생성 */
+
 module.exports = {
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -7,8 +10,17 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
+    screens: {
+      'mobile': { max : '699px' },
+      'md': { min : '700px', max : '766px'},
+      'lg': { min : '767px' },
+    },
     fontFamily: {
       pre: ['var(--pre)'],
+    },
+    height: {
+      'top_nav': '74px',
+      'btm-nav': '68px',
     },
     boxShadow: {
       'box' : '0px 10px 20px 5px rgba(0, 0, 0, 0.05)',
@@ -16,6 +28,7 @@ module.exports = {
     colors: {
       /* dark mode colors */
       'dark-bg': '#101010',
+      'dark-nav-bg': 'rgba(16, 16, 16, 0.85)',
       'dark-list-bg': '#181818',
       'dark-navicon': '#4D4D4D', 
       'dark-navicon_slc': '#F3F5F7',
@@ -29,6 +42,7 @@ module.exports = {
       'dark-icon-hover': '#1C1C1C',
       /* light mode colors */
       'light-bg': '#FFFFFF',
+      'light-nav-bg': 'rgba(255, 255, 255, 0.85)',
       'light-navicon': '#B8B8B8',
       'light-navicon_slc': '#000000',
       'light-hr': '#D9D9D9',
