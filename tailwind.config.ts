@@ -16,7 +16,10 @@ module.exports = {
       'lg': { min : '767px' },
     },
     fontFamily: {
-      pre: ['var(--pre)'],
+      pre: ['var(--pre)', 'sans-serif'],
+    },
+    width: {
+      'navi_icons': '480px',
     },
     height: {
       'top_nav': '74px',
