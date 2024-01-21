@@ -7,9 +7,9 @@ import MyProfile from '../public/icons/myprofile.svg';
 
 const navClass = {
   home : "dark:fill-dark-navicon fill-light-navicon",
-  search: "dark:stroke-dark-navicon stroke-light-navicon",
+  search: "dark:text-dark-navicon text-light-navicon stroke-[8px]",
   post: "dark:fill-dark-navicon fill-light-navicon",
-  like: "dark:stroke-dark-navicon stroke-light-navicon fill-none",
+  like: "dark:text-dark-navicon text-light-navicon fill-none stroke-[8px]",
   profile: "dark:fill-dark-navicon fill-light-navicon",
 }
 

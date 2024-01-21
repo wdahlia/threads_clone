@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import ThreadsLogo from "../../public/logo/threads_logo.svg";
 import MenuIcon from "../../public/icons/menu.svg";
