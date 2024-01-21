@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 /* 767px부터 threads 시작 Input 사라짐, TopNav 컴포넌트는 아직 존재 */
 /* 700px미만부터 threads 모바일 컴포넌트 TopNav 컴포넌트 제거, BottomNav 컴포넌트 생성 */
 
@@ -10,20 +11,23 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
-    screens: {
-      'mobile': { max : '699px' },
-      'md': { min : '700px', max : '766px'},
-      'lg': { min : '767px' },
-    },
-    fontFamily: {
-      pre: ['var(--pre)', 'sans-serif'],
-    },
-    width: {
-      'navi_icons': '480px',
-    },
-    height: {
-      'top_nav': '74px',
-      'btm-nav': '68px',
+    extend: {
+      screens: {
+        'mobile': { max : '699px' },
+        'md': { min : '700px', max : '766px'},
+        'lg': { min : '767px' },
+      },
+      fontFamily: {
+        pre: ['var(--pre)', 'sans-serif'],
+      },
+      height: {
+        'top_nav': '74px',
+        'btm-nav': '68px',
+        'full': '100%',
+      },
+      width: {
+        'navi_icons': '480px',
+      }
     },
     boxShadow: {
       'box' : '0px 10px 20px 5px rgba(0, 0, 0, 0.05)',
