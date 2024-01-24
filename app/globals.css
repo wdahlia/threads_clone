@@ -10,6 +10,10 @@ svg {
    }
 }
 
+.contentImg > .feedImg {
+   height: auto !important
+}
+
 /* @layer문 사용하여 base, components, utilities에 스타일 추가 가능 */
 /* 세가지로 나누는 이유, */
 /* 

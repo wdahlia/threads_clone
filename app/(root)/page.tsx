@@ -1,10 +1,11 @@
+import ThreadCard from '@/components/cards/ThreadCard';
 import React from 'react';
 
-export default function page() {
+export default function MainPage() {
   return (
-    <div>
-      
-    </div>
+    <section>
+      <ThreadCard />
+    </section>
   );
 }
 
