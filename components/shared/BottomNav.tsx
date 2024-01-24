@@ -3,7 +3,7 @@ import { navigationLists } from '../../constants/consts';
 
 export default function BottomNav() {
   return (
-    <nav className='mobile:block hidden fixed bottom-[13px] left-0 mx-auto dark:bg-dark-nav-bg bg-light-nav-bg dark:text-dark-txt text-light-txt w-full h-btm-nav'>
+    <nav className='mobile:block hidden fixed bottom-0 left-0 mx-auto dark:bg-dark-nav-bg bg-light-nav-bg dark:text-dark-txt text-light-txt w-full h-btm-nav'>
       <ul className='flex items-center w-full justify-center'>
         { navigationLists.map((navi, idx) => {
           return (

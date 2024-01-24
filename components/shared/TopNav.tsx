@@ -8,7 +8,7 @@ export default function TopNav() {
     <nav className='sticky top-0 dark:bg-nav-dark dark:text-dark-txt light-txt w-full h-top_nav flex items-center justify-around pt-[10px]'>
       <div className='mobile:block hidden w-[40px] h-[40px]'></div>
       <button className='mobile:flex-grow'>
-        <ThreadsLogo width="40" height="40" className="mx-auto dark:fill-dark-txt light-txt hover:scale-110 ease-out hover:ease-in duration-300"/>
+        <ThreadsLogo width="32" height="32" className="mx-auto dark:fill-dark-txt light-txt hover:scale-110 ease-out hover:ease-in duration-300"/>
       </button>
       <div className="min-w-navi_icons mobile:hidden">
         <ul className='grid grid-cols-5 items-center'>

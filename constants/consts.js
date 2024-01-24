@@ -15,23 +15,23 @@ const navClass = {
 
 export const navigationLists = [
   {
-    icon: <Home width={35} height={35} className={navClass.home} />,
+    icon: <Home width={28} height={28} className={navClass.home} />,
     path: '/',
   },
   {
-    icon: <Search width={35} height={35} className={navClass.search} />,
+    icon: <Search width={28} height={28} className={navClass.search} />,
     path: '/search',
   },
   {
-    icon: <Post width={35} height={35} className={navClass.post} />,
+    icon: <Post width={28} height={28} className={navClass.post} />,
     path: null,
   },
   {
-    icon: <Like width={35} height={35} className={navClass.like} />,
+    icon: <Like width={28} height={28} className={navClass.like} />,
     path: '/activity',
   },
   {
-    icon: <MyProfile width={35} height={35} className={navClass.profile} />,
+    icon: <MyProfile width={28} height={28} className={navClass.profile} />,
     path: '/profile',
   },
 ]
