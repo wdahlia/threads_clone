@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={`${pre.className} dark:bg-dark-bg bg-light-bg h-full`}>
         <main>
           <TopNav />
-            <section className="mx-auto max-w-[620px] px-[24px] min-h-full">{ children }</section>
+            <section className="mx-auto max-w-[620px] px-[24px] mobile:px-[15px] min-h-full">{ children }</section>
           <BottomNav />
         </main>
       </body>

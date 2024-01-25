@@ -3,9 +3,14 @@ import React from 'react';
 
 export default function MainPage() {
   return (
-    <section>
+    <>
       <ThreadCard />
-    </section>
+      <ThreadCard />
+      <ThreadCard />
+      <ThreadCard />
+      <ThreadCard />
+      <ThreadCard />
+    </>
   );
 }
 
