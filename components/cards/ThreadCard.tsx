@@ -11,19 +11,21 @@ export default function ThreadCard() {
     userId : string,
     createdTime : number,
     content : string,
-    ImgUrl? : Array<String>,
+    ImgUrl? : Array<string>,
+    commentNum? : number,
   } = {
     userId : 'karinaa.aespa',
     createdTime : 23,
     content : '12월은 설렘의 계절이야🎄', 
     ImgUrl : ['/profile_ex.jpeg', '/ex_threadImg.jpg', '/ex_threadImg.jpg', '/ex_threadImg.jpg', '/ex_threadImg.jpg'],
+    commentNum: 120,
   }
   
   return (
     <>
-      <article className="max-w-full h-auto flex gap-x-[20px] mobile:gap-x-[10px] mt-[20px]">
+      <article className="max-w-full h-auto flex gap-x-[13px] mobile:gap-x-[10px] mobile:mt-[20px]">
         {/* threads card profile img & vertical line */}
-        <div className="flex flex-col w-[36px] gap-y-[10px] mr-[5px] mt-[15px]">
+        <div className="flex flex-col w-[36px] gap-y-[10px] mt-[15px]">
           <div className='w-full h-[36px] rounded-[50%] relative cursor-pointer'>
             <Image src={'/profile_ex.jpeg'} width={36} height={36} className="rounded-[50%] max-w-none" />
             <button className='absolute left-[23px] -bottom-[5px] hover:scale-110 hover:ease-in duration-300'><AddBtn className="w-[20px] h-[20px] dark:fill-[#FFFFFF] fill-[#101010] dark:stroke-[#101010] stroke-[#FFFFFF]" /></button>
@@ -60,13 +62,19 @@ export default function ThreadCard() {
           </div>
           {/* threads Icons Area */}
           <div className="mt-[10px]">
-            <ul className="flex">
+            <ul className="flex relative -left-[7px]">
               { threadContentIcons.map((item, idx) => <button key={idx} className='hover:dark:bg-dark-icon-hover hover:bg-light-icon-hover p-[5px] rounded-[50%]'>{item.icon}</button>) }
             </ul>
           </div>
+          {/* threads Comment Area */}
+          <div className='flex gap-x-[5px] dark:text-dark-navicon text-light-navicon text-[15px] mt-[10px] font-regular'>
+            <button className={`${ threadData?.commentNum ? 'block' : 'hidden' } hover:underline`}><p>답글 {threadData?.commentNum}개</p></button>
+            <span className={` ${ threadData?.commentNum ? 'block' : 'hidden' } `}>·</span>
+            <button className={`hover:underline`}><span>활동 보기</span></button>
+          </div>
         </div>
       </article>
-      <div className='h-[1px] dark:bg-dark-hr bg-light-hr w-full my-[10px] absolute left-0' />
+      <div className='h-[1px] dark:bg-dark-hr bg-light-hr mt-[15px] mb-[10px] w-full mobile:absolute mobile:left-0 opacity-[0.5] last:hidden' />
     </>
   );
 }

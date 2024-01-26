@@ -27,23 +27,23 @@ const iconClass = {
 
 export const navigationLists = [
   {
-    icon: <Home width={28} height={28} className={iconClass.nav.home} />,
+    icon: <Home width={25} height={25} className={iconClass.nav.home} />,
     path: '/',
   },
   {
-    icon: <Search width={28} height={28} className={iconClass.nav.search} />,
+    icon: <Search width={25} height={25} className={iconClass.nav.search} />,
     path: '/search',
   },
   {
-    icon: <Post width={28} height={28} className={iconClass.nav.post} />,
+    icon: <Post width={25} height={25} className={iconClass.nav.post} />,
     path: null,
   },
   {
-    icon: <Activity width={28} height={28} className={iconClass.nav.like} />,
+    icon: <Activity width={25} height={25} className={iconClass.nav.like} />,
     path: '/activity',
   },
   {
-    icon: <MyProfile width={28} height={28} className={iconClass.nav.profile} />,
+    icon: <MyProfile width={25} height={25} className={iconClass.nav.profile} />,
     path: '/profile',
   },
 ]
