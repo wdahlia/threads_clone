@@ -102,3 +102,19 @@ module.exports ={
 }
 ```
 - theme/extend 내부에 정의 해주면 기존 `h-full` 등과 같은 theme이 잘 적용되는 것을 확인할 수 있음
+
+<br>
+
+#### #4 Issue
+<hr>
+
+*Issue* : next/Image Image 사용하여 overflow-x-scroll 적용시 캐러셀 이미지 사라지는 이슈
+
+<br>
+
+*Solved* : 
+<br>
+
+- Image 태그 사용해서 해결하는 방법 결국 찾지 못해서, img 태그로 변경
+- img 부모 요소에 flex-shrink: 0; 사용하여 현재, 전체 레이아웃이 flex로 잡혀있어 기본값으로 해당 최상단 부모요소의 레이아웃 벗어나지 않게 설정되어있는 문제 해결
+- width: 50%로 배율 사용하고 height: auto; 사용해서 비율 유지 하면서 스크롤 되게끔 설정 완료
