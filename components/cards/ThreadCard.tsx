@@ -1,10 +1,23 @@
-import { threadContentIcons } from '@/constants/consts';
+"use client"
+import { dropDownMenus, threadContentIcons } from '@/constants/consts';
+import { nanoid } from '@/node_modules/nanoid/index';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import AddBtn from '../../public/icons/add_btn.svg';
 import ThreadDetailBtn from '../../public/icons/meatballs_menu.svg';
+import DropDown from '../ui/DropDown';
+
+
+type IsClickedState = Record<string, boolean>;
 
 export default function ThreadCard() {
+
+  const [isClicked, setIsClicked] = useState<IsClickedState>({
+    'header': false,
+    'repost': false,
+    'send': false,
+  });
+
 
   // dummyData
   const threadData : {
@@ -20,7 +33,12 @@ export default function ThreadCard() {
     ImgUrl : ['/profile_ex.jpeg', '/ex_threadImg.jpg', '/ex_threadImg.jpg', '/ex_threadImg.jpg', '/ex_threadImg.jpg'],
     commentNum: 120,
   }
-  
+
+  const handleMenuClick = (name : string) => {
+    setIsClicked((prev) => ({ ...prev, [name] : !isClicked[name] }));
+  }
+
+
   return (
     <>
       <article className="max-w-full h-auto flex gap-x-[13px] mobile:gap-x-[10px] mobile:mt-[20px]">
@@ -40,7 +58,8 @@ export default function ThreadCard() {
             </p>
             <div className='flex items-center'>
               <p className='dark:text-dark-navicon text-light-navicon justify-self-center tracking-[-0.18px]'>{threadData?.createdTime}시간</p>
-              <button className='ml-[5px] p-[8px] rounded-[50%] hover:dark:bg-dark-icon-hover hover:bg-light-icon-hover'><ThreadDetailBtn className="w-[20px] h-[20px] dark:stroke-[#FFFFFF] stroke-[#101010]"/></button>
+              <button className='ml-[5px] p-[8px] rounded-[50%] hover:dark:bg-dark-icon-hover hover:bg-light-icon-hover' onClick={() => handleMenuClick('header')}><ThreadDetailBtn className="w-[20px] h-[20px] dark:stroke-[#FFFFFF] stroke-[#101010]"/></button>
+              { isClicked['header'] && <DropDown content={dropDownMenus.threadHeader} popup header /> }
             </div>
           </div>
           {/* threads content */}
@@ -53,7 +72,7 @@ export default function ThreadCard() {
               { threadData?.ImgUrl?.map((url, idx) => {
                 // ImgUrl의 array 길이가 1개이면, w-full
                 return (
-                  <picture key={idx} className='contentImg h-auto shrink-0 w-[50%] overflow-hidden'>
+                  <picture key={nanoid()} className='contentImg h-auto shrink-0 w-[50%] overflow-hidden'>
                     <img src={url} alt="" className='feedImg object-contain max-w-full block rounded-[8px] -outline-offset-[1px]'/>
                   </picture>
                 )
@@ -63,7 +82,15 @@ export default function ThreadCard() {
           {/* threads Icons Area */}
           <div className="mt-[10px]">
             <ul className="flex relative -left-[7px]">
-              { threadContentIcons.map((item, idx) => <button key={idx} className='hover:dark:bg-dark-icon-hover hover:bg-light-icon-hover p-[5px] rounded-[50%]'>{item.icon}</button>) }
+              { threadContentIcons.map((item, idx) => {
+                return (
+                  <div key={nanoid()} className='relative'>
+                    <button className='hover:dark:bg-dark-icon-hover hover:bg-light-icon-hover p-[5px] rounded-[50%]' onClick={() => handleMenuClick(item?.name)}>{item.icon}</button>
+                    { isClicked[item?.name] && <DropDown content={item.name === 'repost' ? dropDownMenus.threadRepost : dropDownMenus.threadSend } popup repost={item?.name === 'repost'} /> }
+                    {/* thread card 내부에서 content으로 prop 받아오는데 item.name 삼항연산자 사용하면서 그 외의 값 null로도 또 보내줘서 popup이 두개 생성되는 오류 존재했었음 */}
+                  </div>
+                )
+              })}
             </ul>
           </div>
           {/* threads Comment Area */}

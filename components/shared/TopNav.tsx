@@ -1,11 +1,22 @@
-import React from 'react';
+"use client"
+
+import React, { useState } from 'react';
 import ThreadsLogo from "../../public/logo/threads_logo.svg";
 import MenuIcon from "../../public/icons/menu.svg";
-import { navigationLists } from '../../constants/consts';
+import { dropDownMenus, navigationLists } from '../../constants/consts';
+import DropDown from '../ui/DropDown';
+import { nanoid } from '@/node_modules/nanoid/index';
 
 export default function TopNav() {
+  
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleMenuClick = () => {
+    setIsClicked(!isClicked);
+  }
+
   return (
-    <nav className='sticky top-0 dark:bg-dark-nav-bg bg-light-nav-bg backdrop-blur-[28.5px] z-[9999] dark:text-dark-txt light-txt w-full h-top_nav flex items-center justify-around'>
+    <nav className='sticky top-0 dark:bg-dark-nav-bg bg-light-nav-bg backdrop-blur-[28.5px] z-[9999] dark:text-dark-txt light-txt w-full h-top_nav mobile:h-top_mobile_nav flex items-center justify-around'>
       <div className='mobile:block hidden w-[40px] h-[40px]'></div>
       <button className='mobile:flex-grow'>
         <ThreadsLogo width="32" height="32" className="mx-auto dark:fill-dark-txt light-txt hover:scale-110 ease-out hover:ease-in duration-300"/>
@@ -14,14 +25,20 @@ export default function TopNav() {
         <ul className='grid grid-cols-5 items-center'>
           { navigationLists.map((navi, idx) => {
             return (
-              <li key={idx} className="h-top_nav dark:hover:bg-dark-icon-hover hover:bg-light-icon-hover hover:rounded-[10px] px-[30px] m-[5px] py-[20px] flex items-center">
+              <li key={nanoid()} className="h-top_nav dark:hover:bg-dark-icon-hover hover:bg-light-icon-hover hover:rounded-[10px] px-[30px] m-[5px] py-[20px] flex items-center">
                 <button>{navi.icon}</button>
               </li>
             )
           })}
         </ul>
       </div>
-      <button><MenuIcon width="25" height="25" className="dark:fill-dark-navicon fill-light-navicon mobile:mr-[25px] dark:hover:fill-dark-txt hover:fill-light-txt" /></button>
+      {/* Menu Button */}
+      <div onClick={handleMenuClick} className="relative"> 
+        <button>
+          <MenuIcon width="23" height="23" className={`dark:fill-dark-navicon fill-light-navicon mobile:mr-[25px] mt-[8px] dark:hover:fill-dark-txt hover:fill-light-txt ${ isClicked && 'dark:fill-dark-txt fill-light-txt' }`} />
+        </button>
+        { isClicked && <DropDown content={dropDownMenus?.header} /> }
+      </div>
     </nav>
   );
 }

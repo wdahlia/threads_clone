@@ -51,15 +51,26 @@ export const navigationLists = [
 export const threadContentIcons = [
   {
     icon: <Like width={25} height={25} className={iconClass.content.like} />,
+    name: 'like'
   },
   {
     icon: <Message width={25} height={25} className={iconClass.content.message} />,
+    name: 'message'
   },
   {
     icon: <Repost width={25} height={25} className={iconClass.content.repost} />,
+    name: 'repost'
   },
   {
     icon: <Send width={25} height={25} className={iconClass.content.send} />,
+    name: 'send'
   },
 ]
 // myProfile부분 name `@가입한아이디이름` 으로 변경 예정
+
+export const dropDownMenus = {
+  header: ["Appearance", "설정", "문제 신고", "로그아웃"],
+  threadHeader : [["업데이트 안 보기", "차단하기"],["숨기기", "신고하기"]],
+  threadRepost : [["리포스트"], ["인용하기"]],
+  threadSend : ["링크 복사", "퍼가기 코드 받기"],
+}

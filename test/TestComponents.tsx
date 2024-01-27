@@ -1,3 +1,4 @@
+import { nanoid } from '@/node_modules/nanoid/index';
 import React from 'react';
 
 export default function TestComponents() {
@@ -16,9 +17,9 @@ export default function TestComponents() {
       </div>
       {/* 리스트, input Box shadow 스타일링 테스트*/}
       <div className="text-[15px] dark:text-dark-txt text-light-txt font-normal dark:bg-dark-list-bg w-[174px] rounded-[15px] m-[20px] shadow-box dark:border-dark-hr">
-      <ul className="">
-        { listNames.map((list, idx) => <li key={idx} className="border-b-light-hr dark:border-b-dark-hr py-[10px] border-b-[1px] last:border-b-0 first:pt-[15px] last:pb-[15px] indent-[20px]">{list}</li>)}
-      </ul>
+        <ul className="">
+          { listNames.map((list, idx) => <li key={nanoid()} className="border-b-light-hr dark:border-b-dark-hr py-[10px] border-b-[1px] last:border-b-0 first:pt-[15px] last:pb-[15px] indent-[20px]">{list}</li>)}
+        </ul>
       </div>
     </>
   );

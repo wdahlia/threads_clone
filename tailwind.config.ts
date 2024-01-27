@@ -22,6 +22,7 @@ module.exports = {
       },
       height: {
         'top_nav': '74px',
+        'top_mobile_nav': '60px',
         'btm-nav': '68px',
         'full': '100%',
       },
@@ -30,13 +31,15 @@ module.exports = {
       }
     },
     boxShadow: {
-      'box' : '0px 10px 20px 5px rgba(0, 0, 0, 0.05)',
+      'box' : '0 10px 20px 5px rgba(0, 0, 0, 0.05)',
+      'popup' : '0 10px 21px rgba(0, 0, 0, 0.08)'
     },
     colors: {
       /* dark mode colors */
       'dark-bg': '#101010',
       'dark-nav-bg': 'rgba(16, 16, 16, 0.85)',
       'dark-list-bg': '#181818',
+      'dark-dropdown-bg': '#181818',
       'dark-navicon': '#4D4D4D', 
       'dark-navicon_slc': '#F3F5F7',
       'dark-hr': 'rgba(243, 245, 247, 0.15)',
@@ -50,6 +53,8 @@ module.exports = {
       /* light mode colors */
       'light-bg': '#FFFFFF',
       'light-nav-bg': 'rgba(255, 255, 255, 0.85)',
+      'light-list-bg': '#FFFFFF',
+      'light-dropdown-bg': '#F5F5F5',
       'light-navicon': '#B8B8B8',
       'light-navicon_slc': '#000000',
       'light-hr': '#D9D9D9',
