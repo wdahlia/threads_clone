@@ -65,6 +65,7 @@ module.exports = {
       'light-input-brd': 'rgba(0, 0, 0, 0.15)',
       'light-btn-brd': 'rgba(0, 0, 0, 0.15)',
       'light-icon-hover': '#F5F5F5',
+      'light-mobile-icon-hover': '#DDDDDD',
       /* Shared Styles */
       'link-txt': '0095F6',
     },

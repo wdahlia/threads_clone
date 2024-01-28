@@ -8,7 +8,7 @@ export default function BottomNav() {
       <ul className='flex items-center w-full justify-center'>
         { navigationLists.map((navi, idx) => {
           return (
-            <li key={nanoid()} className="h-btm_nav dark:hover:bg-dark-icon-hover hover:bg-light-icon-hover hover:rounded-[10px] px-[35px] py-[20px] flex items-center justify-center" style={{ width: "calc(100% / 5)"}}>
+            <li key={nanoid()} className="h-btm_nav dark:hover:bg-dark-icon-hover hover:bg-light-mobile-icon-hover hover:rounded-[10px] px-[35px] py-[20px] flex items-center justify-center" style={{ width: "calc(100% / 5)"}}>
               <button>{navi.icon}</button>
             </li>
           )

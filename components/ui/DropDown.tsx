@@ -26,8 +26,6 @@ export default function DropDown({ content, popup, header, repost } : Props ) {
     }
   }, [])
 
-  console.log(typeof(content))
-
   // 조건 mobile 일 때, threadCard 내부 컴포넌트는 모두 밑에서 올라오는 list 값
   return (
     <>
@@ -35,7 +33,7 @@ export default function DropDown({ content, popup, header, repost } : Props ) {
         <>
           <div className='fixed w-full h-full top-0 left-0 z-[99998] bg-[#000000] opacity-40 overflow-hidden'></div>
           <div className='fixed z-[99999] left-0 bottom-0 w-full dark:bg-dark-bg bg-light-bg rounded-t-[20px] border border-b-0 dark:border-dark-hr border-light-hr min-h-[120px] shadow-popup'>
-            <ul className={`flex flex-col m-[20px] gap-y-[20px] ${ header ? "" : repost ? "" : "bg-light-dropdown-bg dark:bg-dark-dropdown-bg rounded-[15px]" } dark:text-dark-txt text-light-txt font-medium`}>
+            <ul className={`flex flex-col m-[20px] ${ header ? "gap-y-[20px]" : repost ? "gap-y-[20px]" : "bg-light-dropdown-bg dark:bg-dark-dropdown-bg rounded-[15px]" } dark:text-dark-txt text-light-txt font-medium`}>
               { content?.map((item, idx) => 
                   typeof(item) === 'object' 
                   ? 
@@ -47,7 +45,7 @@ export default function DropDown({ content, popup, header, repost } : Props ) {
                       )}
                     </div>
                   : 
-                    <li key={nanoid()} className="border-b-light-hr dark:border-b-dark-hr border-b-[1px] last:border-b-0 first:py-[15px] last:pb-[15px] indent-[20px] cursor-pointer active:dark:bg-dark-bg active:bg-light-bg font-medium text-[15px]">{item}</li>
+                    <li key={nanoid()} className="border-b-light-hr dark:border-b-dark-hr border-b-[1px] last:border-b-0 py-[15px] indent-[20px] cursor-pointer active:dark:bg-dark-bg active:bg-light-bg font-medium text-[15px]">{item}</li>
               )}
             </ul>
           </div>
