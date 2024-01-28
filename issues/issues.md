@@ -118,3 +118,72 @@ module.exports ={
 - Image 태그 사용해서 해결하는 방법 결국 찾지 못해서, img 태그로 변경
 - img 부모 요소에 flex-shrink: 0; 사용하여 현재, 전체 레이아웃이 flex로 잡혀있어 기본값으로 해당 최상단 부모요소의 레이아웃 벗어나지 않게 설정되어있는 문제 해결
 - width: 50%로 배율 사용하고 height: auto; 사용해서 비율 유지 하면서 스크롤 되게끔 설정 완료
+
+<br>
+
+#### #5 Issue
+<hr>
+
+*Issue* : ThreadCard Header 부분 더보기 아이콘 클릭 시 DropDown 컴포넌트 중복 문제
+
+<img src="../public/issue/issue5.png" >
+
+<br>
+
+*Solved* : 
+<br>
+
+- ThreadCard Header 부분 더보기 아이콘 클릭 시 중복 호출 문제 존재
+- 문제가 되는 코드로 추측 되는 부분
+```typescript
+
+   {/* 아이콘 클릭시 dropdown clicked 상태 변경 관리 */}
+    const [isClicked, setIsClicked] = useState({
+      0: false,
+      2: false,
+      3: false,
+    });
+
+
+    {/* threads card header */}
+      <div className="flex-initial flex justify-between items-center">
+        <p className="dark:text-[#FFFFFF] text-[#101010] text-[15px] font-medium hover:underline cursor-pointer">
+          { threadData?.userId }
+        </p>
+        <div className='flex items-center'>
+          <p className='dark:text-dark-navicon text-light-navicon justify-self-center tracking-[-0.18px]'>{threadData?.createdTime}시간</p>
+          <button className='ml-[5px] p-[8px] rounded-[50%] hover:dark:bg-dark-icon-hover hover:bg-light-icon-hover' onClick={() => handleMenuClick(0)}><ThreadDetailBtn className="w-[20px] h-[20px] dark:stroke-[#FFFFFF] stroke-[#101010]"/></button>
+          { isClicked[0] && <DropDown content={dropDownMenus.threadHeader} popup header /> }
+        </div>
+      </div>
+
+    {/* threads Icons Area */}
+      <div className="mt-[10px]">
+        <ul className="flex relative -left-[7px]">
+          { threadContentIcons.map((item, idx) => {
+            return (
+              <div key={nanoid()} className='relative'>
+                <button className='hover:dark:bg-dark-icon-hover hover:bg-light-icon-hover p-[5px] rounded-[50%]' onClick={() => handleMenuClick(idx)}>{item.icon}</button>
+                { isClicked[idx] && <DropDown content={idx === 2 ? dropDownMenus.threadRepost : idx === 3 ? dropDownMenus.threadSend : null } popup repost={item?.name === 'repost'} /> }
+                {/* thread card 내부에서 content으로 prop 받아오는데 item.name 삼항연산자 사용하면서 그 외의 값 null로도 또 보내줘서 popup이 두개 생성되는 오류 존재했었음 */}
+              </div>
+            )
+          })}
+        </ul>
+      </div>
+```
+1. threadCard Header 부분의 `content={dropDownMenus.threadHeader}`전달 / threadCard Icons Area 부분의 삼항연산자 조건식에서 `content={null}`값 전달로 인한 겹침 현상
+2. isClicked 상태 변경 관리 부분에서 idx를 키값으로 잡았기 때문
+3. 타입 정의가 되어있지 않아 발생한 문제
+<br>
+
+- 1번 문제 해결 위해 `isClicked[idx] && <DropDown content={idx === 2 ? dropDownMenus.threadRepost : dropDownMenus.threadSend }` 로 수정
+
+<img src="../public/issue/issue5-1.png">
+
+- idx === 0이 클릭되었는데 idx === 3 도 중복 호출 현상 여전히 지속
+- idx로 Object 키값 설정하는 것이 아닌 다른 유니크한 값으로 키값 설정하니 문제 해결 완료
+- idx로 삼항연산자를 사용하게 되는경우 idx === 2를 제외한 모든 값이 `:` 기준으로 오른쪽 값으로 지정되기 떄문에 like버튼이나 message 버튼을 눌렀을때도 send의 값이 지정되는 것 확인
+- disabled를 사용해서 우선 idx <= 1의 경우는 버튼 막아두는것으로 임시 설정 완료
+
+
