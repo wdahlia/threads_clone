@@ -51,19 +51,19 @@ export const navigationLists = [
 export const threadContentIcons = [
   {
     icon: <Like width={25} height={25} className={iconClass.content.like} />,
-    name: 'like'
+    name: 'LIKE'
   },
   {
     icon: <Message width={25} height={25} className={iconClass.content.message} />,
-    name: 'message'
+    name: 'MESSAGE'
   },
   {
     icon: <Repost width={25} height={25} className={iconClass.content.repost} />,
-    name: 'repost'
+    name: 'REPOST'
   },
   {
     icon: <Send width={25} height={25} className={iconClass.content.send} />,
-    name: 'send'
+    name: 'SEND'
   },
 ]
 // myProfile부분 name `@가입한아이디이름` 으로 변경 예정
