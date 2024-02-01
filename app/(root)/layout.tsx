@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import '../globals.css';
 import BottomNav from '@/components/shared/BottomNav';
 import TopNav from '@/components/shared/TopNav';
+import { RecoilRoot } from 'recoil';
+import Header from '@/components/shared/Header';
 
 export const metadata: Metadata = {
   title: 'Threads',
@@ -24,7 +26,7 @@ export default function RootLayout({
     <html lang="en" className='h-full'>
       <body className={`${pre.className} dark:bg-dark-bg bg-light-bg h-full`}>
         <main>
-          <TopNav />
+          <Header />
             <section className="mx-auto max-w-[620px] px-[24px] mobile:px-[15px] min-h-full mt-[20px]">{ children }</section>
           <BottomNav />
         </main>

@@ -6,7 +6,7 @@ import { dropDownStore } from '@/store/dropdown/index';
 
 interface Props {
   children : ReactNode,
-  btnClass : string,
+  btnClass? : string,
   name : string,
 }
 export default function DropDownBtn({ children, btnClass, name } : Props ) {

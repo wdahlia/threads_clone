@@ -6,10 +6,13 @@ import MenuIcon from "../../public/icons/menu.svg";
 import { dropDownMenus, navigationLists } from '../../constants/consts';
 import DropDown from '../ui/DropDown';
 import { nanoid } from '@/node_modules/nanoid/index';
+import { useRecoilValue } from 'recoil';
+import { dropDownStore } from '@/store/dropdown/index';
+import DropDownBtn from '../btns/DropDownBtn';
 
 export default function TopNav() {
   
-  const [isClicked, setIsClicked] = useState(false);
+  const isClicked = useRecoilValue(dropDownStore);
 
   const handleMenuClick = () => {
     setIsClicked(!isClicked);
@@ -34,10 +37,10 @@ export default function TopNav() {
       </div>
       {/* Menu Button */}
       <div onClick={handleMenuClick} className="relative"> 
-        <button>
+        <DropDownBtn name="HEADER">
           <MenuIcon width="23" height="23" className={`dark:fill-dark-navicon fill-light-navicon mobile:mr-[25px] mt-[8px] dark:hover:fill-dark-txt hover:fill-light-txt ${ isClicked && 'dark:fill-dark-txt fill-light-txt' }`} />
-        </button>
-        { isClicked && <DropDown content={dropDownMenus?.header} /> }
+        </DropDownBtn>
+        { isClicked === 'HEADER' && <DropDown content={dropDownMenus?.header} /> }
       </div>
     </nav>
   );

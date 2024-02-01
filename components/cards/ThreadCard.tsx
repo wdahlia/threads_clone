@@ -49,8 +49,8 @@ export default function ThreadCard() {
             </p>
             <div className='flex items-center relative'>
               <p className='dark:text-dark-navicon text-light-navicon justify-self-center tracking-[-0.18px]'>{threadData?.createdTime}시간</p>
-              <DropDownBtn btnClass='ml-[5px] p-[8px] rounded-[50%] hover:dark:bg-dark-icon-hover hover:bg-light-icon-hover' name='HEADER'><ThreadDetailBtn className="w-[20px] h-[20px] dark:stroke-[#FFFFFF] stroke-[#101010]"/></DropDownBtn>
-              { isClicked === 'HEADER' && <DropDown content={dropDownMenus.threadHeader} popup header /> }
+              <DropDownBtn btnClass='ml-[5px] p-[8px] rounded-[50%] hover:dark:bg-dark-icon-hover hover:bg-light-icon-hover' name='THREAD_HEADER'><ThreadDetailBtn className="w-[20px] h-[20px] dark:stroke-[#FFFFFF] stroke-[#101010]"/></DropDownBtn>
+              { isClicked === 'THREAD_HEADER' && <DropDown content={dropDownMenus.threadHeader} popup header /> }
             </div>
           </div>
           {/* threads content */}

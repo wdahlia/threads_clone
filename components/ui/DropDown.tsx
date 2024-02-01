@@ -25,9 +25,7 @@ export default function DropDown({ content, popup, header, repost } : Props ) {
   }, 1000)
 
   const handleClickedOutside = (e) => {
-    console.log(e.target)
     if (dropDownRef.current && !dropDownRef.current.contains(e.target)) {
-      console.log(dropDownRef.current)
       setIsClicked(null);
     }
   }
