@@ -76,7 +76,13 @@ export default function ThreadCard() {
               { threadContentIcons.map((item, idx) => {
                 return (
                   <div key={nanoid()} className='relative'>
-                    <DropDownBtn btnClass='hover:dark:bg-dark-icon-hover hover:bg-light-icon-hover p-[5px] rounded-[50%]' name={item?.name}>{item.icon}</DropDownBtn>
+                    <DropDownBtn 
+                        btnClass='hover:dark:bg-dark-icon-hover hover:bg-light-icon-hover p-[5px] rounded-[50%]' 
+                        name={item?.name}
+                        disabled={idx < 2}
+                    >
+                          {item.icon}
+                    </DropDownBtn>
                     { isClicked === item?.name && <DropDown content={item.name === 'REPOST' ? dropDownMenus.threadRepost : dropDownMenus.threadSend } popup repost={item?.name === 'REPOST'} /> }
                     {/* thread card 내부에서 content으로 prop 받아오는데 item.name 삼항연산자 사용하면서 그 외의 값 null로도 또 보내줘서 popup이 두개 생성되는 오류 존재했었음 */}
                   </div>

@@ -9,14 +9,12 @@ import { nanoid } from '@/node_modules/nanoid/index';
 import { useRecoilValue } from 'recoil';
 import { dropDownStore } from '@/store/dropdown/index';
 import DropDownBtn from '../btns/DropDownBtn';
+import { motion } from 'framer-motion';
+
 
 export default function TopNav() {
   
-  const isClicked = useRecoilValue(dropDownStore);
-
-  const handleMenuClick = () => {
-    setIsClicked(!isClicked);
-  }
+  const isClicked : string = useRecoilValue(dropDownStore);
 
   return (
     <nav className='sticky top-0 dark:bg-dark-nav-bg bg-light-nav-bg backdrop-blur-[28.5px] z-[9999] dark:text-dark-txt light-txt w-full h-top_nav mobile:h-top_mobile_nav flex items-center justify-around'>
@@ -28,15 +26,15 @@ export default function TopNav() {
         <ul className='grid grid-cols-5 items-center'>
           { navigationLists.map((navi, idx) => {
             return (
-              <li key={nanoid()} className="h-top_nav dark:hover:bg-dark-icon-hover hover:bg-light-icon-hover hover:rounded-[10px] px-[30px] m-[5px] py-[20px] flex items-center">
+              <motion.li whileTap={{ scale : 0.9 }} key={nanoid()} className="h-top_nav dark:hover:bg-dark-icon-hover hover:bg-light-icon-hover hover:rounded-[10px] px-[30px] m-[5px] py-[20px] flex items-center">
                 <button>{navi.icon}</button>
-              </li>
+              </motion.li>
             )
           })}
         </ul>
       </div>
       {/* Menu Button */}
-      <div onClick={handleMenuClick} className="relative"> 
+      <div className="relative"> 
         <DropDownBtn name="HEADER">
           <MenuIcon width="23" height="23" className={`dark:fill-dark-navicon fill-light-navicon mobile:mr-[25px] mt-[8px] dark:hover:fill-dark-txt hover:fill-light-txt ${ isClicked && 'dark:fill-dark-txt fill-light-txt' }`} />
         </DropDownBtn>

@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import { Menus } from '@/types/index';
+import { motion } from 'framer-motion';
 import React, { ReactNode, useEffect, useRef } from 'react';
 import { dropDownStore } from '@/store/dropdown/index';
 
@@ -8,8 +8,9 @@ interface Props {
   children : ReactNode,
   btnClass? : string,
   name : string,
+  disabled? : boolean,
 }
-export default function DropDownBtn({ children, btnClass, name } : Props ) {
+export default function DropDownBtn({ children, btnClass, name, disabled } : Props ) {
 
   const [isClicked, setIsClicked] = useRecoilState(dropDownStore);
 
@@ -19,9 +20,14 @@ export default function DropDownBtn({ children, btnClass, name } : Props ) {
   }
 
   return (
-    <button className={btnClass} onClick={() => handleMenuClick(name)}>
+    <motion.button 
+      whileTap={{ scale : 0.9 }} 
+      className={btnClass} 
+      onClick={() => handleMenuClick(name)}
+      disabled={disabled}
+    >
       { children }
-    </button>
+    </motion.button>
   );
 }
 

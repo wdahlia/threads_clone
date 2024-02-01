@@ -3,12 +3,44 @@ import { useRecoilState } from 'recoil';
 import { debounce } from 'lodash';
 import React, { useEffect, useRef, useState } from 'react';
 import { dropDownStore } from '@/store/dropdown/index';
+import { motion } from "framer-motion";
 
 interface Props {
   content : string[] | string[][],
   popup? : boolean,
   header? : boolean,
   repost? : boolean,
+}
+
+const mobileVariants = {
+  hidden : { 
+    y : 50,
+    opacity: 0 
+  },
+  show : {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3
+    }
+  }
+}
+
+
+const variants = {
+  hidden : { 
+    x : 10,
+    y : -10,
+    opacity: 0 
+  },
+  show : {
+    x : 0,
+    y : 0,
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3
+    }
+  }
 }
 
 export default function DropDown({ content, popup, header, repost } : Props ) {
@@ -46,7 +78,13 @@ export default function DropDown({ content, popup, header, repost } : Props ) {
       { screenSize < 670 && popup ?
         <>
           <div className='fixed w-full h-full top-0 left-0 z-[99998] bg-[#000000] opacity-15 overflow-hidden'></div>
-          <div ref={dropDownRef} className='fixed z-[99999] left-0 bottom-0 w-full dark:bg-dark-bg bg-light-bg rounded-t-[20px] border border-b-0 dark:border-dark-hr border-light-hr min-h-[120px] shadow-popup'>
+          <motion.div 
+              initial="hidden"
+              animate="show"
+              variants={mobileVariants}
+              ref={dropDownRef} 
+              className='fixed z-[99999] left-0 bottom-0 w-full dark:bg-dark-bg bg-light-bg rounded-t-[20px] border border-b-0 dark:border-dark-hr border-light-hr min-h-[120px] shadow-popup'
+          >
             <ul className={`flex flex-col m-[20px] ${ header ? "gap-y-[20px]" : repost ? "gap-y-[20px]" : "bg-light-dropdown-bg dark:bg-dark-dropdown-bg rounded-[15px]" } dark:text-dark-txt text-light-txt font-medium`}>
               { content?.map((item, idx) => 
                   typeof(item) === 'object' 
@@ -62,14 +100,20 @@ export default function DropDown({ content, popup, header, repost } : Props ) {
                     <li key={nanoid()} className="border-b-light-hr dark:border-b-dark-hr border-b-[1px] last:border-b-0 py-[15px] indent-[20px] cursor-pointer active:dark:bg-dark-bg active:bg-light-bg font-medium text-[15px]">{item}</li>
               )}
             </ul>
-          </div>
+          </motion.div>
         </>
         :
-        <div ref={dropDownRef} className={`absolute z-[999] mobile:-right-[10px] -right-[30px] top-[20px] text-[15px] dark:text-dark-txt text-light-txt font-normal dark:bg-dark-list-bg bg-light-list-bg w-[174px] rounded-[15px] m-[20px] shadow-box dark:border-dark-hr`}>
+        <motion.div 
+          initial="hidden"
+          animate="show"
+          variants={variants}
+          ref={dropDownRef} 
+          className={`absolute z-[999] mobile:-right-[10px] -right-[30px] top-[20px] text-[15px] dark:text-dark-txt text-light-txt font-normal dark:bg-dark-list-bg bg-light-list-bg w-[174px] rounded-[15px] m-[20px] shadow-box dark:border-dark-hr`}
+        >
           <ul>
-            { content.flat().map((list, idx) => <li key={nanoid()} className={`${ content.flat().length > 2 && idx % 2 && "text-[#FF3040]" } border-b-light-hr dark:border-b-dark-hr py-[10px] border-b-[1px] last:border-b-0 first:pt-[15px] last:pb-[15px] indent-[20px] cursor-pointer active:dark:bg-dark-bg active:bg-light-bg font-medium text-[15px]`}>{list}</li>) }
+            { content.flat().map((list, idx) => <li key={nanoid()} className={`${ header &&  idx % 2 && "text-[#FF3040]" } border-b-light-hr dark:border-b-dark-hr py-[10px] border-b-[1px] last:border-b-0 first:pt-[15px] last:pb-[15px] indent-[20px] cursor-pointer active:dark:bg-dark-bg active:bg-light-bg font-medium text-[15px]`}>{list}</li>) }
           </ul>
-        </div>
+        </motion.div>
       }
     </>
   );

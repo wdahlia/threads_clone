@@ -13,6 +13,7 @@
     "@clerk/nextjs": "^4.29.3",
     "@svgr/webpack": "^8.1.0",
     "@uploadthing/react": "^6.1.0",
+    "framer-motion": "^11.0.3",
     "lodash": "^4.17.21",
     "mongoose": "^8.0.4",
     "nanoid": "^5.0.4",
