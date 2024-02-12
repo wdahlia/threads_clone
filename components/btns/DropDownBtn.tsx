@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
 import { motion } from 'framer-motion';
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { ReactNode } from 'react';
 import { dropDownStore } from '@/store/dropdown/index';
 
 

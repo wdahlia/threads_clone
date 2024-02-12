@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import ThreadsLogo from "../../public/logo/threads_logo.svg";
 import MenuIcon from "../../public/icons/menu.svg";
 import { dropDownMenus, navigationLists } from '../../constants/consts';
-import DropDown from '../ui/DropDown';
+import { DropDown } from '@/components/uis';
 import { nanoid } from '@/node_modules/nanoid/index';
 import { useRecoilValue } from 'recoil';
 import { dropDownStore } from '@/store/dropdown/index';
-import DropDownBtn from '../btns/DropDownBtn';
+import DropDownBtn from '@/components/btns/DropDownBtn';
 import { motion } from 'framer-motion';
 
 

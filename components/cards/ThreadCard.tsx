@@ -7,8 +7,8 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import AddBtn from '../../public/icons/add_btn.svg';
 import ThreadDetailBtn from '../../public/icons/meatballs_menu.svg';
-import DropDown from '../ui/DropDown';
-import DropDownBtn from '../btns/DropDownBtn';
+import { DropDown } from '@/components/uis';
+import DropDownBtn from '@/components/btns/DropDownBtn';
 
 
 
@@ -36,7 +36,7 @@ export default function ThreadCard() {
         {/* threads card profile img & vertical line */}
         <div className="flex flex-col w-[36px] gap-y-[10px] mt-[15px]">
           <div className='w-full h-[36px] rounded-[50%] relative cursor-pointer'>
-            <Image src={'/profile_ex.jpeg'} width={36} height={36} className="rounded-[50%] max-w-none" />
+            <Image src={'/profile_ex.jpeg'} width={36} height={36} className="rounded-[50%] max-w-none" alt="user_profile" />
             <button className='absolute left-[23px] -bottom-[5px] hover:scale-110 hover:ease-in duration-300'><AddBtn className="w-[20px] h-[20px] dark:fill-[#FFFFFF] fill-[#101010] dark:stroke-[#101010] stroke-[#FFFFFF]" /></button>
           </div>
           <div className='grow dark:bg-dark-hr bg-light-hr w-[2px] rounded-[20px] h-[100px] mx-auto'></div>
